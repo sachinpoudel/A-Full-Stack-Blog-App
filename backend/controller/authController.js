@@ -207,7 +207,7 @@ export const forgotPassword = async (req, res) => {
     user.resetToken = resetPassToken;
     user.resetTokenExpiry = resetPassTokenExpiry;
     await user.save();
-    await resetPassEmail(user.email, `http://localhost:5173/reset-password/${resetPassToken}`);
+    await resetPassEmail(user.email, `https://frontend-owf6.onrender.com/${resetPassToken}`);
     res.status(200).json({
       message: "Reset password email sent successfully! Check your email",
       success: true

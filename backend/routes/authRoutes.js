@@ -17,9 +17,9 @@ router.get('/google', passport.authenticate('google', {
 router.get('/google/callback', passport.authenticate('google', {}), (req, res) => {
   try {
     jwtAndCookie(res, req.user._id);
-    res.redirect('http://localhost:5173/dashboard');
+    res.redirect('https://frontend-owf6.onrender.com/dashboard');
   } catch (error) {
-    res.redirect('http://localhost:5173/login?error=auth_failed');
+    res.redirect('https://frontend-owf6.onrender.com/login?error=auth_failed');
   }
 });
 router.get('/logout', (req, res) => {
@@ -31,7 +31,7 @@ router.get('/logout', (req, res) => {
     }
     res.clearCookie('connect.sid');
     res.clearCookie('token'); 
-    res.redirect('/signup');
+    res.redirect('https://frontend-owf6.onrender.com/signup');
   });
 });
 export default router;

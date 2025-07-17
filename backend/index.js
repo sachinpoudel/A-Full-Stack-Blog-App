@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://frontend-owf6.onrender.com',
   // Frontend URL
   credentials: true // Allow cookies to be sent
 }));
@@ -20,7 +20,6 @@ app.use(cookieParser());
 import passport from 'passport';
 import session from 'express-session';
 import './middleware/passport.js';
-import { verifyJWT } from './middleware/verifyJWT.js';
 const port = process.env.PORT || 3000;
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -32,7 +31,7 @@ app.use(session({
     sameSite: 'strict',
     maxAge: 24 * 60 * 60 * 1000,
     // 24 hours
-    path: '/' // Make sure this matches your clearCookie path
+    path: '/' 
   }
 }));
 app.use(passport.initialize());
