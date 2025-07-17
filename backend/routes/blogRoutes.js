@@ -1,0 +1,10 @@
+import { createBlog, deleteBlog, displayAllBlogs, displayUserBlogs } from "../controller/blogController.js";
+import { verifyJWT } from "../middleware/verifyJWT.js";
+import express from 'express';
+import { upload } from "../middleware/multer.js";
+const router = express.Router();
+router.post('/create', upload.single('image'), verifyJWT, createBlog);
+router.delete('/delete/:id', verifyJWT, deleteBlog);
+router.get('/allblogs', displayAllBlogs);
+router.get('/userblogs', verifyJWT, displayUserBlogs);
+export default router;
