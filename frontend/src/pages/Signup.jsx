@@ -50,7 +50,7 @@ export default function Signup() {
   };
 
   const handleGoogleSignup = () => {
-    window.location.href = "http://localhost:3000/api/auth/google";
+    window.location.href = "https://a-full-stack-blog-app.onrender.com/api/auth/google";
   };
 
   return (
