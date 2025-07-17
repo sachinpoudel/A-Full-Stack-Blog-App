@@ -184,7 +184,7 @@ const Dashboard = () => {
                 >
                   <div className="h-48 overflow-hidden">
                     <img
-                      src={`http://localhost:3000/images/${blog.image}`}
+                      src={`https://a-full-stack-blog-app.onrender.com/images/${blog.image}`}
                       alt={blog.title}
                       className="w-full h-full object-cover"
                     />
