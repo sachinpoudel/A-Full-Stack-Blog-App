@@ -1,6 +1,6 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://a-full-stack-blog-app.onrender.com";
 
 export const signUpFunc = async (formData) => {
   const url = `${BASE_URL}/api/auth/signup`;
