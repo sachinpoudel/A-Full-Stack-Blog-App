@@ -3,7 +3,7 @@ import path from 'path';
 export const jwtAndCookie = async (res, userId) => {
   const token = jwt.sign({
     userId
-  }, process.env.JWT_SECRET);
+  }, process.env.JWT_SECRET,{expiresIn: '7d'});
   res.cookie("token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',

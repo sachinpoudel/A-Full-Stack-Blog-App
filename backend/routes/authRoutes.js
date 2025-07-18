@@ -32,9 +32,22 @@ router.get('/logout', (req, res) => {
         message: 'Logout failed'
       });
     }
-    res.clearCookie('connect.sid');
-    res.clearCookie('token'); 
-    res.redirect('https://frontend-owf6.onrender.com/signup');
+    res.clearCookie('connect.sid', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      path: "/"
+    });
+    
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      path: "/"
+    });
+    
+    // Use environment variable for URL
+    res.redirect(`${process.env.FRONTEND_URL}/signup`);
   });
 });
 export default router;
