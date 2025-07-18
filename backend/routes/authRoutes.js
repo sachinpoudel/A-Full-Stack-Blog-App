@@ -3,6 +3,9 @@ import { forgotPassword, resetPassword, login, logOut, checkAuth, signUp, verify
 import { verifyJWT } from '../middleware/verifyJWT.js';
 import passport from 'passport';
 import { jwtAndCookie } from '../utlis/jwtAndCookie.js';
+import dotenv from 'dotenv';
+dotenv.config();
+
 const router = express.Router();
 router.post('/signup', signUp);
 router.post('/login', login);
@@ -17,9 +20,9 @@ router.get('/google', passport.authenticate('google', {
 router.get('/google/callback', passport.authenticate('google', {}), (req, res) => {
   try {
     jwtAndCookie(res, req.user._id);
-    res.redirect('https://frontend-owf6.onrender.com/dashboard');
+    res.redirect(`${process.env.FRONTEND_URL}/dashboard`);
   } catch (error) {
-    res.redirect('https://frontend-owf6.onrender.com/login?error=auth_failed');
+    res.redirect(`${process.env.FRONTEND_URL}/login?error=auth_failed`);
   }
 });
 router.get('/logout', (req, res) => {
