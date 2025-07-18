@@ -52,8 +52,8 @@ app.use(session({
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    secure: true,
+    sameSite: 'None',
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
     path: '/' 
   }
@@ -71,14 +71,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/blog', blogRoutes);
 
 // Health check endpoint
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok' });
-});
 
-// Fallback route
-app.use('*', (req, res) => {
-  res.status(404).json({ message: 'Not Found' });
-});
 
 // Start server
 const port = process.env.PORT || 3000;
