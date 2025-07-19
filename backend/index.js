@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
 }
 const allowedOrigins =
   process.env.NODE_ENV === "production"
-    ? [process.env.FRONTEND_URL || "https://frontend-owf6.onrender.com"]
+    ? [process.env.FRONTEND_URL || "https://a-full-stack-blog-app1.onrender.com"]
     : ["http://localhost:5173"];
 
 app.use(
