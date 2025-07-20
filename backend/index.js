@@ -28,8 +28,10 @@ if (process.env.NODE_ENV === "production") {
 const allowedOrigins =
   process.env.NODE_ENV === "production"
     ? [process.env.FRONTEND_URL || "https://a-full-stack-blog-app1.onrender.com"]
-    : ["http://localhost:5173"];
+    : ["http://localhost:3000", "http://localhost:5173"];
 
+
+    
 app.use(
   cors({
     origin: function (origin, callback) {
