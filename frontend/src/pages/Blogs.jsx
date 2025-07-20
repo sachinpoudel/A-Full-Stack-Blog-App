@@ -73,7 +73,7 @@ const Blogs = () => {
         <img
           src={
             blog.image
-              ? `http://localhost:3000/images/${blog.image}`
+              ? `${process.env.BACKEND_URL}/images/${blog.image}`
               : "https://via.placeholder.com/400x200?text=No+Image"
           }
           alt={blog.title || "Blog image"}

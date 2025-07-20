@@ -50,7 +50,7 @@ export default function Signup() {
   };
 
   const handleGoogleSignup = () => {
-    window.location.href = "https://a-full-stack-blog-app.onrender.com/api/auth/google";
+    window.location.href = `${process.env.BACKEND_URL}/api/auth/google`;
   };
 
   return (
