@@ -11,7 +11,7 @@ const BlogCard = ({ blog }) => {
               <img
                 src={
                   blog.image
-                    ? `http://localhost:3000/images/${blog.image}`
+                    ? `${process.env.REACT_APP_API_URL}/${blog.image}`
                     : "https://via.placeholder.com/400x200?text=No+Image"
                 }
                 alt={blog.title || "Blog image"}

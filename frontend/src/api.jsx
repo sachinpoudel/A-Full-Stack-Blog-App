@@ -1,6 +1,6 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
-const BASE_URL = process.env.BACKEND_URL || "http://localhost:3000";
+const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3000";
 
 export const signUpFunc = async (formData) => {
   const url = `${BASE_URL}/api/auth/signup`;

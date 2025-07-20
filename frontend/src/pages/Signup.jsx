@@ -50,7 +50,7 @@ export default function Signup() {
   };
 
   const handleGoogleSignup = () => {
-    window.location.href = `${process.env.BACKEND_URL}/api/auth/google`;
+    window.location.href = `${process.env.REACT_APP_API_URL}/api/auth/google`;
   };
 
   return (
