@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
       }
     };
-    verifyAuth();
+    verifyAuth(); // defining it will not run this we should explictly call it bczz we are using async await
   }, []);
 
   //Fetch blogs
