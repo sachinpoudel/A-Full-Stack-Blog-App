@@ -8,6 +8,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="text-center text-red-800 bg-amber-300">currently the project may not work as expected but you can <Link to="https://github.com/sachinpoudel/A-Full-Stack-Blog-App"><span className="font-bold text-blue">try</span></Link> it at your local machine</div>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
