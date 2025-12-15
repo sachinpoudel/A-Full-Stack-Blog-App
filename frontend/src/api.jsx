@@ -1,9 +1,9 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
-const BASE_URL = "https://a-full-stack-blog-app.onrender.com";
+const VITE_BASE_URL = "https://a-full-stack-blog-app.onrender.com" || import.meta.env.VITE_BASE_URL;
 
 export const signUpFunc = async (formData) => {
-  const url = `${BASE_URL}/api/auth/signup`;
+  const url = `${VITE_BASE_URL}/api/auth/signup`;
 
   try {
     const response = await axios.post(
@@ -28,7 +28,7 @@ export const signUpFunc = async (formData) => {
   }
 };
 export const loginFunc = async (formData) => {
-  const url = `${BASE_URL}/api/auth/login`;
+  const url = `${VITE_BASE_URL}/api/auth/login`;
 
   try {
     const response = await axios.post(
@@ -52,7 +52,7 @@ export const loginFunc = async (formData) => {
 
 export const verifyEmailCode = async (joinedCode) => {
   try {
-    const response = await axios.post(`${BASE_URL}/api/auth/verify-email`, {
+    const response = await axios.post(`${VITE_BASE_URL}/api/auth/verify-email`, {
       code: joinedCode,
     });
     return response;
@@ -64,7 +64,7 @@ export const verifyEmailCode = async (joinedCode) => {
 
 export const reverifyEmailCode = async (joinedCode) => {
   try {
-    const response = await axios.post(`${BASE_URL}/api/auth/re-verify-email`, {
+    const response = await axios.post(`${VITE_BASE_URL}/api/auth/re-verify-email`, {
       code: joinedCode,
     });
     return response;
@@ -76,7 +76,7 @@ export const reverifyEmailCode = async (joinedCode) => {
 
 export const resetLink = async (emailval) => {
   try {
-    const response = await axios.post(`${BASE_URL}/api/auth/forgot-password`, {
+    const response = await axios.post(`${VITE_BASE_URL}/api/auth/forgot-password`, {
       email: emailval,
     });
     return response;
@@ -87,7 +87,7 @@ export const resetLink = async (emailval) => {
 };
 
 export const resetPass = async (token, password) => {
-  const url = `${BASE_URL}/api/auth/reset-password/${token}`;
+  const url = `${VITE_BASE_URL}/api/auth/reset-password/${token}`;
   try {
     const response = await axios.post(
       url,
@@ -107,7 +107,7 @@ export const resetPass = async (token, password) => {
 };
 
 export const checkAuth = async () => {
-  const url = `${BASE_URL}/api/auth/check-auth`;
+  const url = `${VITE_BASE_URL}/api/auth/check-auth`;
   try {
     const response = await axios.get(url, {
       withCredentials: true,
@@ -121,7 +121,7 @@ export const checkAuth = async () => {
 };
 
 export const logoutFunc = async () => {
-  const url = `${BASE_URL}/api/auth/logout`;
+  const url = `${VITE_BASE_URL}/api/auth/logout`;
   try {
     const response = await axios.post(url, {}, { withCredentials: true });
     console.log("Logout response:", response.data);
@@ -133,7 +133,7 @@ export const logoutFunc = async () => {
 };
 export const getUserBlogs = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/api/blog/userblogs`, {
+    const response = await axios.get(`${VITE_BASE_URL}/api/blog/userblogs`, {
       withCredentials: true,
     });
     console.log("User blogs fetched successfully:", response.data);
@@ -148,7 +148,7 @@ export const getUserBlogs = async () => {
 };
 
 export const getAllBlogs = async (search = "", page = 1, limit = 10) => {
-  const url = `${BASE_URL}/api/blog/allblogs?search=${search}&page=${page}&limit=${limit}`;
+  const url = `${VITE_BASE_URL}/api/blog/allblogs?search=${search}&page=${page}&limit=${limit}`;
   try {
     const response = await axios.get(url, { withCredentials: true });
     console.log(" blogs fetched successfully for all user:", response.data);
@@ -163,7 +163,7 @@ export const getAllBlogs = async (search = "", page = 1, limit = 10) => {
 };
 export const createBlog = async (blogData) => {
   try {
-    const response = await axios.post(`${BASE_URL}/api/blog/create`, blogData, {
+    const response = await axios.post(`${VITE_BASE_URL}/api/blog/create`, blogData, {
       withCredentials: true,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -179,7 +179,7 @@ export const createBlog = async (blogData) => {
 export const deleteBlog = async (blogId) => {
   try {
     const response = await axios.delete(
-      `${BASE_URL}/api/blog/delete/${blogId}`,
+      `${VITE_BASE_URL}/api/blog/delete/${blogId}`,
       { withCredentials: true },
     );
     return response;
@@ -191,7 +191,7 @@ export const deleteBlog = async (blogId) => {
 
 export const findBlogId = async (id) => {
   try {
-    const response = await axios.get(`${BASE_URL}/api/blog/${id}`, {
+    const response = await axios.get(`${VITE_BASE_URL}/api/blog/${id}`, {
       withCredentials: true,
     });
     if (!response.data || !response.data.blog) {
